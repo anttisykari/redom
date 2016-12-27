@@ -19,6 +19,12 @@ export function mount (parent, child, before) {
   } else {
     child.mount && child.mount();
   }
+
+  if (childEl.parentElement === parentEl) {
+    childEl.dontRemoveMe = true;
+    // TODO remove 'dontRemoveMe' later
+    return;
+  }
   if (before) {
     parentEl.insertBefore(childEl, before.el || before);
   } else {

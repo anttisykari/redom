@@ -24,7 +24,9 @@ export function setChildren (parent, children) {
   while (traverse) {
     const next = traverse.nextSibling;
 
-    unmount(parent, traverse);
+    if (!traverse.dontRemoveMe) {
+      unmount(parent, traverse);
+    }
 
     traverse = next;
   }
